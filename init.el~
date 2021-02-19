@@ -1,0 +1,49 @@
+;; 自定义函数
+(defun open-my-init-file()
+  (interactive)
+  (find-file "C:/Users/一只鱼/AppData/Roaming/.emacs.d/init.el")
+)
+(global-set-key (kbd "<f2>") 'open-my-init-file)
+
+;; 自定义默认配置
+(set-foreground-color "#E0DFDB")
+(set-background-color "#102372")
+(toggle-truncate-lines 1)
+(global-tool-bar-mode -1)
+(scroll-bar-mode -1)
+(linum-mode t)
+;; 关闭欢迎界面
+(setq inhibit-startup-message t)
+
+;;图文混排
+(autoload 'iimage-mode "iimage" "Support Inline image minor mode." t)
+(autoload 'turn-on-iimage-mode "iimage" "Turn on Inline image minor mode." t)
+
+;; 注意 elpa.emacs-china.org 是 Emacs China 中文社区在国内搭建的一个 ELPA 镜像
+(when (>= emacs-major-version 24)
+     (require 'package)
+     (package-initialize)
+     (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+                      ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
+
+
+;; 插件配置
+
+(require 'org-tempo)
+
+;; 最近打开的文件
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-item 10)
+
+;; vim插件
+(evil-mode 1)
+
+;; 自动补齐
+(global-company-mode t)
+(custom-set-variables '(package-selected-packages '(company)))
+(custom-set-faces)
+(put 'upcase-region 'disabled nil)
+
+;; org-download
+(setq make-backup-files nil)

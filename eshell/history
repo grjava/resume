@@ -1,0 +1,11 @@
+ls
+dir
+ps
+ls
+dir
+ls -l
+cd elpa
+ls
+ls -l
+git
+exit
